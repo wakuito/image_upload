@@ -6,12 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tops", "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
-    <%= javascript_importmap_tags %>
+  <header>
+    <ul>
+      <li><a href="#">Bootstrapテキストページ</a></li>
+      <li><a href="#">トップページ</a></li>
+    </ul>
+  </header>
+  <%= yield %>
+  <%= javascript_importmap_tags %>
+  <footer>
+    <p>有限会社田富調剤薬局</p>
+    <p>Access:山梨県中央市西花輪○○○○-××</p>
+  </footer>
   </body>
 </html>
