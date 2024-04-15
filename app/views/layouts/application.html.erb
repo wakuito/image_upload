@@ -11,17 +11,30 @@
   </head>
 
   <body>
-  <header>
-    <ul>
-      <li><a href="#">Bootstrapテキストページ</a></li>
-      <li><a href="#">トップページ</a></li>
-    </ul>
-  </header>
-  <%= yield %>
-  <%= javascript_importmap_tags %>
-  <footer>
-    <p>有限会社田富調剤薬局</p>
-    <p>Access:山梨県中央市西花輪○○○○-××</p>
-  </footer>
+    <header>
+      <ul>
+        <li><a href="#">Bootstrapテキストページ</a></li>
+        <li><a href="#">トップページ</a></li>
+      </ul>
+    </header>
+
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+    <% if logged_in? %>
+      <%= link_to "Profile", user_path(current_user.id) %>
+      <%= link_to "Logout", new_session_path(current_user.id), data: { turbo_method: :delete} %>
+    <% else %>
+      <%= link_to "Sign up", new_user_path %>
+      <%= link_to "Login", new_session_path %>
+    <% end %>
+    
+    <%= yield %>
+    <%= javascript_importmap_tags %>
+    <footer>
+      <p>有限会社田富調剤薬局</p>
+      <p>Access:山梨県中央市西花輪○○○○-××</p>
+    </footer>
   </body>
 </html>
