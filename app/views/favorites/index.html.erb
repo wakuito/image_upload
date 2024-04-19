@@ -1,0 +1,11 @@
+<h1>お気に入り一覧</h1>
+
+<% if @favorites.any? %>
+  <ul>
+    <% @favorites.each do |favorite| %>
+      <li><%= link_to favorite.blog.title, blog_path(favorite.blog) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>お気に入りはありません。</p>
+<% end %>
