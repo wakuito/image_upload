@@ -31,6 +31,8 @@ gem 'coffee-rails'
 
 gem 'bcrypt'
 
+gem 'rexml'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -49,6 +51,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem 'letter_opener_web'
 end
 
 group :test do
