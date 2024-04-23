@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :feeds
   resources :contacts
   resources :favorites, only: [:create, :destroy, :index]
   resources :sessions, only: [:new, :create, :destroy]

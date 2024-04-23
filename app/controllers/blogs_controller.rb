@@ -11,10 +11,13 @@ class BlogsController < ApplicationController
 
   def create
     @blog = current_user.blogs.build(blog_params)
+    @blog.image.retrieve_from_cache! params[:cache][:image]
     if params[:back]
       render :new
     else
       if @blog.save
+        # ブログが保存された後に画像を移動し、ブログのレコードに保存する
+        @blog.image = params[:blog][:image]
         BlogMailer.creation_confirmation(@blog).deliver_now
         redirect_to blogs_path, notice: "ブログを作成しました！"
       else
@@ -47,6 +50,7 @@ class BlogsController < ApplicationController
 
   def confirm
     @blog = current_user.blogs.build(blog_params)
+    ActiveStorage::Current.url_options = Rails.application.config.action_mailer.default_url_options
     render :new if @blog.invalid?
   end
 
@@ -54,7 +58,7 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image, :image_cache)
   end
 
   def set_blog

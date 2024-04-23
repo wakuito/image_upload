@@ -2,25 +2,37 @@
 
 <p><%= notice %></p>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th>
-    <th>投稿者名</th>
-  </tr>
-
-  <% @blogs.each do |blog| %>
+<div class="content-margin">
+  <table>
     <tr>
-      <td><%= blog.title %></td>
-      <td><%= blog.content %></td>
-      <td><%= blog.user.name %></td>
-
-      <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
-      <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { turbo_method: 'get', turbo_confirm: '本当に編集していいですか？' } %>
-      <td><%= link_to 'ブログを削除する', blog_path(blog.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除していいですか？' } %></td>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>投稿者名</th>
     </tr>
-  <% end %>
-</table>
 
-<%= link_to 'お気に入り一覧',favorites_path %>
-<%= link_to '新しくブログを投稿する',new_blog_path %>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><%= blog.user.name %></td>
+        <td>
+          <% if blog.image.present? %>
+            <strong>Image:</strong>
+            <%= image_tag blog.image.url %>
+          <% else %>
+            画像はありません
+          <% end %>
+        </td>
+
+        <td><%= link_to '詳細を確認する', blog_path(blog.id) %></td>
+        <td><%= link_to "ブログを編集する", edit_blog_path(blog.id), data: { turbo_method: 'get', turbo_confirm: '本当に編集していいですか？' } %>
+        <td><%= link_to 'ブログを削除する', blog_path(blog.id), data: { turbo_method: :delete, turbo_confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="links">
+  <%= link_to 'お気に入り一覧',favorites_path %>
+  <%= link_to '新しくブログを投稿する',new_blog_path %>
+</div>

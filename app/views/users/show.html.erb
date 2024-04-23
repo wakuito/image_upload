@@ -1,3 +1,12 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+<p>
+    <strong>Image:</strong>
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.url %>
+    <% else %>
+      画像はありません
+    <% end %>
+  </p>

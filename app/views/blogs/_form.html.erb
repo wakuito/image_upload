@@ -15,10 +15,17 @@
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
+
   <div class="blog_title">
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+  
   <%= form.submit %>
 <% end %>
 

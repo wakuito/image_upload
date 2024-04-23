@@ -1,9 +1,11 @@
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  overflow-y: auto;
   text-align: center;
 }
 
@@ -78,6 +80,15 @@ footer {
   color: white;
   margin: auto;
   font-size: 12px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+}
+
+td img {
+  max-height: 100px; /* 画像の高さを適切な値に設定 */
+}
+
+.links{
+  margin-top:20px;
+  padding-bottom: 100px;
 }

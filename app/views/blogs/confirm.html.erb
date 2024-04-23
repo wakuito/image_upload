@@ -6,6 +6,16 @@
 
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
+  <p>
+    <strong>Image:</strong>
+    <% if @blog.image.present? %>
+      <%= image_tag @blog.image.url %>
+      <%= hidden_field_tag :"cache[image]",@blog.image.cache_name %>
+    <% else %>
+      画像はありません
+    <% end %>
+  </p>
+  
   <%= form.submit  "登録する" %>
 
   <%= form.submit "戻る", name: 'back' %>

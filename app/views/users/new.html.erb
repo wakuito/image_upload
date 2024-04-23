@@ -12,17 +12,33 @@
 <% end %>
 
 <%= form_with(model: @user, local: true, data: {turbo: false}) do |f| %>  
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div>
+    <%= f.label :"名前" %>
+    <%= f.text_field :name %>
+  </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <div>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
 
-  <%= f.submit "Create my account" %>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= f.label :"アイコン", style: "display: block" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <div>
+    <%= f.submit "アカウント作成" %>
+  </div>
 <% end %>
